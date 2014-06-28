@@ -1,0 +1,22 @@
+<form action="<%= album_track_url(current_album.id, track.id) %>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="track[band_id]" value="<%= current_album.band_id %>">
+  <label for="track_album_id">Inside Album: </label>
+  <select id="track_album_id" name="track[album_id]">
+    <option value="<%= current_album.id %>"><%= current_album.name %></option>
+    <% band.albums.each do |album| %>
+      <% if current_album.id != album.id %>
+        <option value="<%= album.id %>"><%= album.name %></option>
+      <% end %>
+    <% end %>
+  </select><br>
+  <label for="track_name">Track Name:<label>
+  <input type="text" name="track[name]" value="<%= track.name %>"/><br>
+  <label for="track_track_type">Track Type:<label>
+  <input type="radio" name="track[track_type]" value="bonus">bonus</input>
+  <input type="radio" name="track[track_type]" value="regular">regular</input><br>
+  <textarea name="track[lyrics]" cols="100" rows="20"> <%= track.lyrics %></textarea><br>
+  <input type="submit" value="Update">
+</form>
+<%= link_to "Back to track details", album_track_url %>

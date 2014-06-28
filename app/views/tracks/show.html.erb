@@ -1,0 +1,8 @@
+<h2>Song<h2>
+<h3>Title: <%= track.name %></h3>
+<h3>By: <%= track.band.name %></h3>
+<h4>Track Type: <%= track.track_type %></h4>
+<p><%= track.lyrics %></p>
+<%= link_to "Back to Album", album_url(track.album_id) %>
+<%= link_to "Edit this track", edit_album_track_url(track.album_id, track.id) %>
+

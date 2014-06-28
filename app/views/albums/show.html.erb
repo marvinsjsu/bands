@@ -1,0 +1,12 @@
+<h2><%= album.name %></h2>
+<h3>by <%= album.band.name %></h3>
+<h4>Track Listings</h4>
+<ul>
+<% album.tracks.each do |track| %>
+  <li><%= link_to track.name, album_track_url(album.id, track.id) %></li>
+<% end %>
+</ul>
+
+<%= link_to "Back to album collection", band_url(album.band_id) %>
+<%= link_to "Add tracks", new_album_track_url(album.id) %>
+<%= link_to "Edit Album", edit_album_url(album)%>
